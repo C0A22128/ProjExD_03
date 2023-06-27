@@ -139,6 +139,24 @@ class Beam:
             del self
 
 
+class Score:
+    '''
+    スコア表示クラス
+    '''
+    def __init__(self) :
+        self._img = pg.font.SysFont("hgp創英角ポップ体", 30)
+        self.font = pg.font.Font(None, 50)
+        self.score = (0, 0, 255)
+        self.score = 0
+        self.img = self.font.render("表示させる文字列", 0, (0, 0, 255))
+        self.rct = (100, HEIGHT - 50)
+        
+    def update(self, screen: pg.Surface):
+        self._img = self.score("スコア", 0, self.score)
+        screen.blit(self._img, self.rct)
+        self.score += 1
+        
+        
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
@@ -180,6 +198,7 @@ def main():
                     beam = None
                     del bombs[i]
                     bird.change_img(6, screen)
+                    Score.update(screen)
                     break
 
         pg.display.update()
@@ -191,3 +210,4 @@ if __name__ == "__main__":
     main()
     pg.quit()
     sys.exit()
+
