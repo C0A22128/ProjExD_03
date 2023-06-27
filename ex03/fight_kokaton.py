@@ -139,7 +139,7 @@ class Beam:
         """
         self._rct.move_ip(self._vx, self._vy)
         screen.blit(self._img, self._rct)
-        ## 画面外に出たら生成したオブジェクトを削除する(オプション) ##
+        #画面外に出たら生成したオブジェクトを削除する(オプション) 
         if self._rct.left > WIDTH:
             del self
 
